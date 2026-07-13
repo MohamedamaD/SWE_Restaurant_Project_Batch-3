@@ -20,7 +20,7 @@
  */
 
 const bcrypt = require("bcrypt");
-
+const { User } = require("../models");
 const register = async (req, res) => {
   try {
     // 1. Validate
@@ -47,7 +47,7 @@ const register = async (req, res) => {
 
     // 6. Save user
 
-    const newUser = await User.create(value);
+    const newUser = await userModel.create(value);
     const { password, ...userData } = newUser.toJSON();
 
     // Send Response
